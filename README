@@ -1,0 +1,20 @@
+iaBotControlPlugin
+=========================
+
+Overview
+--------
+
+iaBotControlPlugin is a simple approach to keep Bots from crawling certain pages.
+
+Contents
+--------
+
+This Plugin combines sfDoctrinePlugin, sfGuardDoctrinePlugin and sfCryptographpPlugin to 
+keep Bots away from certain pages of your symfony project. 
+
+
+License
+-------
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.

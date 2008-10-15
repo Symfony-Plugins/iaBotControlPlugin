@@ -1,0 +1,28 @@
+---
+iaBotControlRequest:
+  tableName: ia_bot_control_request
+  actAs: [Timestampable]
+  columns:
+    id:
+      type:             integer(4)
+      primary:          true
+      autoincrement:    true
+    ip:
+      type:             string(128)
+      notnull:          true
+      ip:               true
+    credits:
+      type:             integer(4)
+      notnull:          true
+    user_id:
+      type:             integer(4)
+    created_at:
+      type:             timestamp
+    updated_at:
+      type:             timestamp
+  relations:
+    User:
+      class:            sfGuardUser
+      local:            user_id
+      onDelete:         CASCADE
+      foreignAlias:     BotControlRequests

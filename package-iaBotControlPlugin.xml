@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>[automatic]</name>
+ <channel>pear.symfony-project.com</channel>
+ <summary>iaBotControlPlugin is a simple approach to keep Bots from crawling certain pages.</summary>
+ <description>This Plugin combines sfDoctrinePlugin, sfGuardDoctrinePlugin and sfCryptographpPlugin to keep Bots away from certain pages of your symfony project. </description>
+ <lead>
+  <name>Sebastian Schulze</name>
+  <user>bascht</user>
+  <email>sebastian.schulze@inaudito.de</email>
+  <active>yes</active>
+ </lead>
+ <date>[automatic]</date>
+ <version>
+   <release>0.0.1</release>
+   <api>0.0.1</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.symfony-project.com/license">MIT license</license>
+ <notes>-</notes>
+ <contents>
+   [automatic]
+ </contents>
+
+ <dependencies>
+  <required>
+   <php>
+    <min>5.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <package>
+      <name>symfony</name>
+      <channel>pear.symfony-project.com</channel>
+      <min>0.8.1</min>
+      <max>1.1.0</max>
+      <exclude>1.1.0</exclude>
+   </package>
+   <package>
+        <name>sfCryptographpPlugin</name>
+        <channel>plugins.symfony-project.org</channel>
+        <min>1.0.0</min>
+        <max>1.1.0</max>
+        <exclude>1.1.0</exclude>
+  </package>
+  </required>
+ </dependencies>
+
+ <phprelease>
+ </phprelease>
+
+ <changelog>
+ </changelog>
+</package>
