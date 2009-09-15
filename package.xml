@@ -8,7 +8,7 @@
   <name>Sebastian Schulze</name>
   <user>bascht</user>
   <email>sebastian.schulze@inaudito.de</email>
-  <active>no</active>
+  <active>yes</active>
  </lead>
  <lead>
   <name>Maik Riechert</name>
@@ -27,7 +27,7 @@
  </stability>
  <license uri="http://www.symfony-project.com/license">MIT</license>
  <notes>-</notes>
- <contents><dir name="/"><dir name="config"><file name="app_dist.yml" role="data"/><dir name="doctrine"><file name="schema.yml" role="data"/></dir></dir><dir name="lib"><dir name="filter"><dir name="doctrine"><file name="PluginiaBotControlRequestFormFilter.class.php" role="data"/></dir><file name="iaBotControlFilter.class.php" role="data"/></dir><dir name="form"><file name="aiBotControlAuthorizeForm.php" role="data"/><dir name="base"><file name="BaseaiBotControlAuthorizeForm.php" role="data"/></dir><dir name="doctrine"><file name="PluginiaBotControlRequestForm.class.php" role="data"/></dir></dir><dir name="model"><dir name="doctrine"><file name="PluginiaBotControlRequest.class.php" role="data"/><file name="PluginiaBotControlRequestTable.class.php" role="data"/></dir></dir></dir><file name="LICENSE" role="data"/><dir name="modules"><dir name="iaBotControl"><dir name="actions"><file name="actions.class.php" role="data"/></dir><dir name="config"><file name="security.yml" role="data"/></dir><dir name="lib"><file name="BaseiaBotControlActions.class.php" role="data"/></dir><dir name="templates"><file name="authorizeSuccess.php" role="data"/></dir></dir><file name="package-iaBotControlPlugin.xml" role="data"/><file name="README" role="data"/></dir></contents>
+ <contents><dir name="/"><dir name="config"><file name="app_dist.yml" role="data"/><dir name="doctrine"><file name="schema.yml" role="data"/></dir></dir><dir name="lib"><dir name="filter"><dir name="doctrine"><file name="PluginiaBotControlRequestFormFilter.class.php" role="data"/></dir><file name="iaBotControlFilter.class.php" role="data"/></dir><dir name="form"><file name="aiBotControlAuthorizeForm.php" role="data"/><dir name="base"><file name="BaseaiBotControlAuthorizeForm.php" role="data"/></dir><dir name="doctrine"><file name="PluginiaBotControlRequestForm.class.php" role="data"/></dir></dir><dir name="model"><dir name="doctrine"><file name="PluginiaBotControlRequest.class.php" role="data"/><file name="PluginiaBotControlRequestTable.class.php" role="data"/></dir></dir></dir><file name="LICENSE" role="data"/><dir name="modules"><dir name="iaBotControl"><dir name="actions"><file name="actions.class.php" role="data"/></dir><dir name="config"><file name="security.yml" role="data"/></dir><dir name="lib"><file name="BaseiaBotControlActions.class.php" role="data"/></dir><dir name="templates"><file name="authorizeSuccess.php" role="data"/></dir></dir></dir><file name="package-iaBotControlPlugin.xml" role="data"/><file name="README" role="data"/></dir></contents>
 
  <dependencies>
   <required>
