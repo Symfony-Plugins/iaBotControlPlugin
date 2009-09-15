@@ -1,0 +1,10 @@
+# to change plugin defaults put this in your app.yml
+
+all:
+  iaBotControlPlugin:
+    authorize_form: aiBotControlAuthorizeForm
+    max_requests: 5
+    max_requests_authorized: 10
+    timeout: 5
+    ignore_signed_in: false
+    ignore_authorized: false

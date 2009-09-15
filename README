@@ -1,17 +1,117 @@
-iaBotControlPlugin
+iaBotControl Plugin
 =========================
 
-Overview
---------
+This Plugin is a simple approach to keep bots from crawling certain pages.
+It combines sfDoctrinePlugin, sfDoctrineGuardPlugin and sfCryptoCaptchaPlugin but
+is not limited to the sfCryptoCaptchaPlugin.
 
-iaBotControlPlugin is a simple approach to keep Bots from crawling certain pages.
+Installation
+------------
 
-Contents
---------
+The plugin can installed by using SVN or PEAR, although I recommend using SVN (for any plugin).
 
-This Plugin combines sfDoctrinePlugin, sfGuardDoctrinePlugin and sfCryptographpPlugin to 
-keep Bots away from certain pages of your symfony project. 
+### Install using SVN
+    $ mkdir plugins/aiBotControlPlugin
+    $ cd plugins/aiBotControlPlugin
+    plugins/aiBotControlPlugin$ svn co http://svn.symfony-project.com/plugins/iaBotControlPlugin/trunk .
 
+### Install using PEAR (not tested but should work)
+    $ symfony plugin:install iaBotControlPlugin
+
+Activate the plugin module in your application's settings.yml file:
+
+    all:
+      .settings:
+        enabled_modules: [default, ..., iaBotControl]
+        
+Activate the plugin filter in your application's filters.yml file:
+
+    security: ~
+
+    # insert your own filters here
+    bot_control:
+      class: iaBotControlFilter
+
+    cache:    ~
+    
+How it works
+------------
+
+A common behaviour of bots is that they are fast. And this is where we attack.
+By measuring the time difference between two requests we decide if the client
+is "fast" or not. Of course, if this would be the only method of detection then
+a lot of non-bots or power-users would be locked out by our plugin.
+
+The solution is that every client has credits which he can use to make a "fast"
+request. The initial default number of credits is 5. This means that a client
+can make 5 "fast" requests before he is locked out. If the client makes a "slow"
+request while still having credits left his credits get resetted to the start value.
+This is the human buffer for not taking down power-users. So for getting locked out
+you would have to make 5 "fast" requests in a row.
+
+If the client has no credits left he gets forwarded to a page where he must
+prove that he is a human. This is by default a simple form with a captcha but it
+can be anything you like because it's fully customizable. If the human successfully
+solves the capcha his credits get resetted and he gets redirected to the real page.
+If he doesn't solve it then he can't access any page which is protected by the plugin
+until he proves that he is a human.
+
+In case you get complaints by your users because of locking them out too often you
+can adjust the initial credits and the time difference for a "short" request.
+You can also completely disable the plugin's functionality for signed-in users
+with a simple parameter. This would be useful if you took care of protecting the
+user registration very strongly so you are sure that no registered user can be a bot.
+You can also customize how the plugin behaves if the client has correctly solved
+the captcha. The default is that an authenticated client has 10 instead of 5 credits.
+If you're convinced that the captcha is the best of the world you can also tell the
+plugin to not check clients after they authenticated once.
+
+The plugin recognizes clients at the moment by their ip addresses. Another option
+would have been to just use the session of the user but as a bot can create as
+many sessions as he likes this would be a pretty weak protection. The only possible
+problem could exist with proxy-server users where multiple clients are using the same proxy.
+If someone knows a good solution to this just tell us. ;)
+
+Using the plugin
+----------------
+    
+The plugin must be activated for each module and action you want to secure.
+Therefore you have to create a security.yml file in the "config" folder of a module
+in which you write this:
+
+    all:
+      ia_bot_control: true
+      
+or to secure only a single action:
+
+    vote:
+      ia_bot_control: true
+    post_comment:
+      ia_bot_control: true
+
+Configuration
+-------------
+
+The plugin can be configured with the app.yml file.
+See the app_dist.yml file in the "config" folder of the plugin.
+
+The available options are:
+
+- *authorize_form*: the form to be used by the authorization/captcha-screen, default: aiBotControlAuthorizeForm
+  (note that it may be enough to just replace the template to have a prettier design)
+- *max_requests*: the number of requests a client can make very shortly in time before he must authorize himself
+  (default: 5)
+- *max_requests_authorized*: same as above but this time for clients which have successfully solved the captcha
+  at least one time (default: 10)
+- *timeout*: the number in seconds which must have passed since the last request to not count as "fast"
+  (default: 5)
+- *ignore_signed_in*: boolean, if this is true then the plugin won't be active if the user is signed in
+  (default: false)
+- *ignore_authorized*: boolean, if this is true then the plugin won't be active if the client has solved the
+  captcha at least one time (default: false)
+
+If you want to use another captcha plugin or something else then just set the *authorize_form* option to
+what you like and create a custom template.
 
 License
 -------

@@ -3,25 +3,31 @@
  <name>iaBotControlPlugin</name>
  <channel>pear.symfony-project.com</channel>
  <summary>iaBotControlPlugin is a simple approach to keep Bots from crawling certain pages.</summary>
- <description>This Plugin combines sfDoctrinePlugin, sfGuardDoctrinePlugin and sfCryptographpPlugin to keep Bots away from certain pages of your symfony project. </description>
+ <description>This Plugin combines sfDoctrinePlugin, sfDoctrineGuardPlugin and sfCryptoCaptchaPlugin but is not limited to the sfCryptoCaptchaPlugin. It tries to stop bots from crawling your pages while not affecting normal users.</description>
  <lead>
   <name>Sebastian Schulze</name>
   <user>bascht</user>
   <email>sebastian.schulze@inaudito.de</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Maik Riechert</name>
+  <user>neothemachine</user>
+  <email>maik.riechert@animey.net</email>
   <active>yes</active>
  </lead>
- <date>2008-10-15</date>
+ <date>2009-09-16</date>
  <version>
-   <release>0.0.1</release>
-   <api>0.0.1</api>
+   <release>0.1.0</release>
+   <api>0.1.0</api>
  </version>
  <stability>
   <release>alpha</release>
   <api>alpha</api>
  </stability>
- <license uri="http://www.symfony-project.com/license">MIT license</license>
+ <license uri="http://www.symfony-project.com/license">MIT</license>
  <notes>-</notes>
- <contents><dir name="/"><dir name="modules"><dir name="iaBotControl"><dir name="validate"><file name="checkAuthorization.yml" role="data"/></dir><dir name="templates"><file name="authorizeSuccess.php" role="data"/><file name="checkAuthorizationSuccess.php" role="data"/></dir><dir name="config"><file name="security.yml" role="data"/></dir><dir name="actions"><file name="actions.class.php" role="data"/></dir><dir name="lib"><file name="BaseiaBotControlActions.class.php" role="data"/></dir></dir></dir><dir name="config"><dir name="doctrine"><file name="schema.yml" role="data"/></dir></dir><file name="package-iaBotControlPlugin.xml" role="data"/><file name="README" role="data"/><file name="LICENSE" role="data"/><dir name="lib"><file name="iaBotControl.class.php" role="data"/><dir name="model"><dir name="doctrine"><file name="PluginiaBotControlRequest.class.php" role="data"/><file name="PluginiaBotControlRequestTable.class.php" role="data"/></dir></dir><file name="iaBotControlFilter.class.php" role="data"/></dir></dir></contents>
+ <contents><dir name="/"><dir name="config"><file name="app_dist.yml" role="data"/><dir name="doctrine"><file name="schema.yml" role="data"/></dir></dir><dir name="lib"><dir name="filter"><dir name="doctrine"><file name="PluginiaBotControlRequestFormFilter.class.php" role="data"/></dir><file name="iaBotControlFilter.class.php" role="data"/></dir><dir name="form"><file name="aiBotControlAuthorizeForm.php" role="data"/><dir name="base"><file name="BaseaiBotControlAuthorizeForm.php" role="data"/></dir><dir name="doctrine"><file name="PluginiaBotControlRequestForm.class.php" role="data"/></dir></dir><dir name="model"><dir name="doctrine"><file name="PluginiaBotControlRequest.class.php" role="data"/><file name="PluginiaBotControlRequestTable.class.php" role="data"/></dir></dir></dir><file name="LICENSE" role="data"/><dir name="modules"><dir name="iaBotControl"><dir name="actions"><file name="actions.class.php" role="data"/></dir><dir name="config"><file name="security.yml" role="data"/></dir><dir name="lib"><file name="BaseiaBotControlActions.class.php" role="data"/></dir><dir name="templates"><file name="authorizeSuccess.php" role="data"/></dir></dir><file name="package-iaBotControlPlugin.xml" role="data"/><file name="README" role="data"/></dir></contents>
 
  <dependencies>
   <required>
@@ -34,23 +40,67 @@
    <package>
       <name>symfony</name>
       <channel>pear.symfony-project.com</channel>
-      <min>0.8.1</min>
-      <max>1.1.0</max>
-      <exclude>1.1.0</exclude>
+      <min>1.2.0</min>
+      <max>1.3.0</max>
+      <exclude>1.3.0</exclude>
    </package>
    <package>
-        <name>sfCryptographpPlugin</name>
+        <name>sfDoctrineGuardPlugin</name>
         <channel>plugins.symfony-project.org</channel>
-        <min>1.0.0</min>
-        <max>1.1.0</max>
-        <exclude>1.1.0</exclude>
+        <min>3.0.0</min>
+        <max>4.0.0</max>
+        <exclude>4.0.0</exclude>
   </package>
   </required>
+  <optional>
+   <package>
+        <name>sfCryptoCaptchaPlugin</name>
+        <channel>plugins.symfony-project.org</channel>
+        <min>0.0.9</min>
+        <max>1.0.0</max>
+        <exclude>1.0.0</exclude>
+  </package>
+  </optional>
  </dependencies>
 
  <phprelease>
  </phprelease>
 
  <changelog>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2009-09-16</date>
+   <license uri="http://www.symfony-project.com/license">MIT License</license>
+   <notes>
+ * complete rewrite for sf 1.2
+ * new default captcha plugin: sfCryptoCaptchaPlugin
+ * captcha form is fully customizable now
+ * new options to ignore signed-in users or those who already solved a captcha
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2008-10-15</date>
+   <license uri="http://www.symfony-project.com/license">MIT License</license>
+   <notes>
+ * first release for sf 1.0
+ * default captcha plugin: sfCryptographpPlugin
+   </notes>
+  </release>
+
  </changelog>
 </package>
