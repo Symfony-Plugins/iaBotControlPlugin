@@ -5,6 +5,7 @@
  * @package    symfony
  * @subpackage plugin
  * @author     Sebastian Schulze <sebastian.schulze@inaudito.de>
+ * @author     Maik Riechert <maik.riechert@animey.net>
  */
 
 class BaseiaBotControlActions extends sfActions
