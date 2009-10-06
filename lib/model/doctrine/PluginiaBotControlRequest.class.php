@@ -14,8 +14,8 @@ abstract class PluginiaBotControlRequest extends BaseiaBotControlRequest
   	}
     $this->setCredits(intval($max_requests));
     
-    // force saving of record because it wouldn't be if the only difference is updated_at
-    $this->state(Doctrine_Record::STATE_DIRTY);
+    // force saving of record because it wouldn't be if the only difference is the automagic updated_at
+    $this->setUpdatedAt(date('Y-m-d H:i:s'));
   }
 
   public function removeCredit()
