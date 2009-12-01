@@ -1,4 +1,4 @@
-<?php use_helper('Form', 'I18N', 'sfCryptoCaptcha') ?>
+<?php use_helper('I18N', 'sfCryptoCaptcha') ?>
 
 <h2><?php echo __('Please enter the Captcha Code'); ?></h2>
 <p style="text-align:center">
@@ -9,6 +9,6 @@
   <?php echo $form['captcha']->render(); ?>
   <?php echo captcha_image(); ?><br/>
   <?php echo captcha_reload_button(); ?><br/>
-  <?php echo submit_tag() ?>
+  <input type="submit" value="verify" />
 </form>
 </p>
